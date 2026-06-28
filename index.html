@@ -1813,7 +1813,6 @@
         </div>
     </div>
 </div>
-
 <!-- ===== افکت تبلیغاتی ===== -->
 <div class="promo-badge" id="promoBadge">
     <div class="badge-content" onclick="handl   ePromoClick()">
@@ -1822,9 +1821,9 @@
         <div class="promo-ripple"></div>
         <div class="badge-icon"><i class="fas fa-gift"></i></div>
         <div class="badge-text">
-            <span class="title">🎉شرکت در کلاس های خصوصی و گروهی</span>
-            <span class="subtitle">سنگی.آموزشگاه ذهن نو</span>
-            <span class="highlight">⏳ 09389711915</span>
+            <span class="title">آموزش جامع دیجیتال مارکتینگ </span>
+            <span class="subtitle">22 دوره برای پولسازی در دنیای دیجیتال</span>
+            <span class="highlight">راه اندازی کسب و کار</span>
         </div>
         <div class="close-badge" onclick="event.stopPropagation(); closePromo();">
             <i class="fas fa-times"></i>
@@ -2504,10 +2503,10 @@
         window.toggleFaq = toggleFaq;
 // ===== تبلیغ =====
         function handlePromoClick() {
-            showToast('🎓 ثبت‌نام در دوره‌های نوین با تخفیف ویژه!');
-            window.open('https://www.novin.com/academy/digital-marketing-course/?ref=31106701');
-        }
-        window.handlePromoClick = handlePromoClick;
+        // باز کردن لینک در تب جدید
+        window.open('https://www.novin.com/academy/digital-marketing-course/?ref=31106701', '_blank');
+    }
+    window.handlePromoClick = handlePromoClick;
 
         function closePromo() {
             const badge = document.getElementById('promoBadge');
