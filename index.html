@@ -17,17 +17,17 @@
         }
 
         :root {
-            --primary: #9A32EF;
-            --secondary: #7B2FBE;
-            --pink: #f093fb;;
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --pink: #f093fb;
             --red: #f5576c;
             --dark: #1a1a2e;
             --text: #6b7280;
             --light-bg: #f9fafb;
-            --border: #e5e7eb;
-            --shadow: rgba(154, 50, 239, 0.15);
-        }  
-        
+            --border: #f0f0f0;
+            --shadow: rgba(102, 126, 234, 0.15);
+        }
+
         [data-theme="dark"] {
             --primary: #8b9cf7;
             --secondary: #a78bfa;
@@ -35,11 +35,11 @@
             --text: #d1d5db;
             --light-bg: #1f2937;
             --border: #374151;
-            --shadow: rgba(154, 50, 239, 0.15);
+            --shadow: rgba(255, 255, 255, 0.05);
         }
 
         body {
-            background: linear-gradient(135deg, #9A32EF 0%, #7B2FBE 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -307,17 +307,15 @@
         /* ===== منوهای اصلی ===== */
         .grades-menu {
             display: flex;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
             justify-content: center;
             gap: 25px 35px;
             margin-bottom: 40px;
         }
 
         .grade-card {
-            flex: 0 0 auto;
-            width: 220px;
-            min-width: 160px;
-            max-width: 280px;
+            flex: 1 1 200px;
+            min-width: 180px;
             background: white;
             border-radius: 35px;
             padding: 25px 15px 20px;
@@ -1506,24 +1504,24 @@
 </head>
 <body>
 
-<!-- ===== هدر فقط با عکس ===== -->
-<div class="header" style="padding: 0; margin-bottom: 30px; border-radius: 30px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.1);">
-    <img src="https://i.postimg.cc/Nj8ySkTd/header1.png" 
-         alt="MathYar" 
-         style="width: 100%; height: auto; display: block; border-radius: 30px;">
-</div>
-        
-        <!-- بخش راست: دکمه‌ها -->
-        <div style="display: flex; align-items: center; gap: 15px; z-index: 2;">
-            <span style="background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); color: white; padding: 10px 28px; border-radius: 50px; font-weight: 700; border: 1px solid rgba(255,255,255,0.3);">
-                <i class="fas fa-gem"></i> دانلود فایل‌ها
-            </span>
-            <button class="theme-toggle" style="background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3); border-radius: 50px; padding: 10px 16px; cursor: pointer; font-size: 1.2rem; color: white;">
-                <i class="fas fa-moon"></i>
+    
+<div class="container" id="appContainer">
+    <!-- ===== هدر ===== -->
+    <div class="header">
+        <div class="header-left">
+            <div class="logo-container">
+                <div class="logo-icon"><i class="fas fa-rocket"></i></div>
+                <h1>MathYar <span class="tagline">همراه همیشگی شما در درس ریاضی</span></h1>
+            </div>
+        </div>
+        <div class="header-right">
+            <span><i class="fas fa-gem"></i> سایت شخصی غلامرضاصالح کار</span>
+            <button class="theme-toggle" id="themeToggle" title="تغییر تم">
+                <i class="fas fa-moon" id="themeIcon"></i>
             </button>
         </div>
     </div>
-</div>
+
      
 
 
@@ -1573,7 +1571,6 @@
                 <i class="fas fa-graduation-cap"></i> 
                 فصول <span id="gradeNameDisplay" style="color: var(--secondary);">هفتم</span>
             </h3>
-            <a href="#"></a>
             <div class="search-box">
                 <i class="fas fa-search"></i>
                 <input type="text" id="searchInput" placeholder="جستجوی فصل...">
@@ -2053,7 +2050,7 @@
                     { name: 'فصل پنجم وششم', size: '۲.۷ مگابایت', url: 'https://drive.google.com/uc?export=download&id=15iq3v4uNtZnFgfZdevgr5g-eRjHL3Cxa' },
                     { name: 'فصل ششم', size: '۲.۲ مگابایت', url: 'https://drive.google.com/uc?export=download&id=1_vsoDjDNr-zAoCM-PAhPV3tm9eqkMC22' },
                     { name: 'فصل 1,2,3,4,5', size: '۲.۷ مگابایت', url: 'https://drive.google.com/uc?export=download&id=12Op4mbiJ69_aM5wfhEP78cW71t-PTRTB' },
-                    { name: 'پایش1404ریاضی باپاسخ', size: '۲.۲ مگابایت', url: 'https://drive.google.com/uc?export=download&id=1px9637roA7-d3NZzisSZq1fhmm33RZyw' },
+                    { name: 'فصل هشتم', size: '۲.۲ مگابایت', url: '#' },
                     { name: 'فصل نهم', size: '۲.۲ مگابایت', url: '#' }
                 ]
             } 
