@@ -2239,8 +2239,6 @@
         const searchInput = document.getElementById('searchInput');
         const progressFill = document.getElementById('progressFill');
         const progressText = document.getElementById('progressText');
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
 
         // ===== متغیرها =====
         let currentGrade = null;
@@ -2250,19 +2248,7 @@
         let isDark = localStorage.getItem('mathyar-theme') === 'dark';
 
         // ===== تم =====
-        function toggleTheme() {
-            isDark = !isDark;
-            document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-            localStorage.setItem('mathyar-theme', isDark ? 'dark' : 'light');
-            themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-        }
-
-        if (isDark) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            themeIcon.className = 'fas fa-sun';
-        }
-
-        themeToggle.addEventListener('click', toggleTheme);
+        
 
         // ===== توابع =====
         function getChaptersForGrade(gradeKey) {
