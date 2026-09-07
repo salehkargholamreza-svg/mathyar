@@ -851,99 +851,6 @@
             font-weight: 600;
             color: var(--dark);
         }
-
-        /* ===== بخش نظرات ===== */
-        .testimonials-section {
-            margin-top: 30px;
-            padding: 30px;
-            background: var(--light-bg);
-            border-radius: 30px;
-            border: 2px solid var(--border);
-        }
-
-        [data-theme="dark"] .testimonials-section {
-            background: var(--light-bg);
-        }
-
-        .testimonials-section h3 {
-            color: var(--dark);
-            font-size: 1.4rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .testimonials-section h3 i {
-            color: var(--secondary);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .testimonial-card {
-            background: white;
-            padding: 20px;
-            border-radius: 20px;
-            border: 2px solid var(--border);
-            transition: 0.3s;
-        }
-
-        [data-theme="dark"] .testimonial-card {
-            background: var(--light-bg);
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px var(--shadow);
-        }
-
-        .testimonial-card .stars {
-            color: #f59e0b;
-            margin-bottom: 10px;
-        }
-
-        .testimonial-card p {
-            color: var(--text);
-            font-size: 0.95rem;
-            line-height: 1.8;
-            margin-bottom: 10px;
-        }
-
-        .testimonial-card .author {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .testimonial-card .author .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-        }
-
-        .testimonial-card .author .name {
-            font-weight: 700;
-            color: var(--dark);
-            font-size: 0.95rem;
-        }
-
-        .testimonial-card .author .role {
-            font-size: 0.8rem;
-            color: var(--text);
-        }
-
         /* ===== بخش تماس ===== */
         .contact-section {
             margin-top: 30px;
@@ -1390,7 +1297,6 @@
             .promo-badge .badge-icon { font-size: 1.8rem; }
             .promo-badge .badge-text .title { font-size: 0.95rem; }
             .promo-badge .badge-text .subtitle { font-size: 0.7rem; }
-            .testimonials-grid { grid-template-columns: 1fr; }
             .contact-grid { grid-template-columns: 1fr; }
             .about-section .features { grid-template-columns: 1fr 1fr; }
             .footer-bottom { flex-direction: column; text-align: center; }
@@ -1545,47 +1451,6 @@
             </div>
         </div>
     </div>
-
-    <!-- ===== بخش نظرات ===== -->
-    <div class="testimonials-section">
-        <h3><i class="fas fa-star"></i> نظرات کاربران</h3>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"MathYar واقعاً یادگیری ریاضی رو برام آسون کرد! فایل‌های PDF خیلی کامل هستن."</p>
-                <div class="author">
-                    <div class="avatar">م</div>
-                    <div>
-                        <div class="name">محمد رضایی</div>
-                        <div class="role">دانش‌آموز پایه هشتم</div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"بهترین سایت آموزشی ریاضی که تا حالا دیدم! طراحی جذاب و فایل‌های عالی داره."</p>
-                <div class="author">
-                    <div class="avatar">ن</div>
-                    <div>
-                        <div class="name">نیلوفر حسینی</div>
-                        <div class="role">دانش‌آموز پایه نهم</div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                <p>"خیلی ممنون از تیم MathYar! واقعاً کیفیت فایل‌های PDF عالی و به‌روز هست."</p>
-                <div class="author">
-                    <div class="avatar">س</div>
-                    <div>
-                        <div class="name">سارا کریمی</div>
-                        <div class="role">دانش‌آموز پایه هفتم</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- ===== بخش تماس ===== -->
     <div class="contact-section">
         <h3><i class="fas fa-envelope"></i> ارتباط با ما</h3>
