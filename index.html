@@ -307,15 +307,17 @@
         /* ===== منوهای اصلی ===== */
         .grades-menu {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             justify-content: center;
             gap: 25px 35px;
             margin-bottom: 40px;
         }
 
         .grade-card {
-            flex: 1 1 200px;
-            min-width: 180px;
+            flex: 0 0 auto;
+            width: 220px;
+            min-width: 160px;
+            max-width: 280px;
             background: white;
             border-radius: 35px;
             padding: 25px 15px 20px;
