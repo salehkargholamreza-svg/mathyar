@@ -87,41 +87,9 @@
             background: rgba(31, 41, 55, 0.95);
         }
 
-        /* ===== هدر ===== */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-            border-bottom: 3px solid transparent;
-            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--pink)) border-box;
-            border-image: linear-gradient(90deg, var(--primary), var(--secondary), var(--pink)) 1;
-            border-image-slice: 1;
-            position: relative;
-        }
-
-        .header::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--pink));
-            animation: shimmer 3s ease-in-out infinite;
-        }
-
         @keyframes shimmer {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
         }
 
         .logo-container {
@@ -160,49 +128,6 @@
         @keyframes starSpin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
-        }
-
-        .header h1 {
-            font-size: 2.4rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .header h1 .tagline {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text);
-            -webkit-text-fill-color: var(--text);
-            background: none;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .header-right span {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 10px 28px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1rem;
-            box-shadow: 0 8px 25px var(--shadow);
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: default;
         }
 
         .theme-toggle {
@@ -1453,26 +1378,18 @@
         /* ===== واکنش‌گرا ===== */
         @media (max-width: 700px) {
             .container { padding: 20px 15px; }
-            .header { flex-direction: column; align-items: stretch; gap: 12px; }
-            .header-left { flex-wrap: wrap; }
-            .header h1 { font-size: 1.8rem; }
-            .header h1 .tagline { font-size: 0.7rem; }
             .grade-card { min-width: 140px; padding: 18px 10px; }
             .grade-card .grade-icon { width: 65px; height: 65px; line-height: 65px; font-size: 2.2rem; }
             .chapters-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
             .chapter-btn { padding: 14px 16px; }
             .chapter-btn .chapter-num { width: 40px; height: 40px; font-size: 0.9rem; }
             .links-grid { grid-template-columns: 1fr; }
-            .detail-header { flex-wrap: wrap; padding: 20px; }
-            .detail-header .detail-icon { width: 70px; height: 70px; font-size: 2.5rem; }
-            .detail-header .detail-title h2 { font-size: 1.5rem; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
             .promo-badge { bottom: 15px; right: 15px; left: 15px; }
             .promo-badge .badge-content { padding: 14px 18px; min-width: unset; width: 100%; border-radius: 20px; }
             .promo-badge .badge-icon { font-size: 1.8rem; }
             .promo-badge .badge-text .title { font-size: 0.95rem; }
             .promo-badge .badge-text .subtitle { font-size: 0.7rem; }
-            .chapters-header .search-box input { width: 100px; }
             .testimonials-grid { grid-template-columns: 1fr; }
             .contact-grid { grid-template-columns: 1fr; }
             .about-section .features { grid-template-columns: 1fr 1fr; }
@@ -1480,16 +1397,12 @@
         }
 
         @media (max-width: 480px) {
-            .header h1 { font-size: 1.5rem; }
-            .header h1 .tagline { display: none; }
             .grade-card .grade-icon { width: 55px; height: 55px; line-height: 55px; font-size: 1.8rem; }
             .chapters-grid { grid-template-columns: 1fr; }
             .link-card { padding: 18px; }
-            .detail-header .back-icon { width: 45px; height: 45px; font-size: 1rem; }
             .about-section .features { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; }
             .progress-track { width: 100px; }
-            .chapters-header .search-box input { width: 80px; }
             .promo-badge .badge-content { padding: 12px 15px; gap: 10px; }
             .promo-badge .badge-icon { font-size: 1.5rem; }
             .promo-badge .badge-text .title { font-size: 0.85rem; }
