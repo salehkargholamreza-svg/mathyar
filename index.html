@@ -238,6 +238,99 @@
             margin-bottom: 40px;
         }
 
+        .grade-card {
+            flex: 1 1 200px;
+            min-width: 180px;
+            background: white;
+            border-radius: 35px;
+            padding: 25px 15px 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            border: 2px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        [data-theme="dark"] .grade-card {
+            background: var(--light-bg);
+        }
+
+        .grade-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--pink));
+            opacity: 0;
+            transition: 0.4s;
+        }
+
+        .grade-card:hover::before {
+            opacity: 1;
+        }
+
+        .grade-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--secondary);
+            box-shadow: 0 20px 60px var(--shadow);
+        }
+
+        .grade-card .grade-icon {
+            font-size: 2.8rem;
+            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 12px;
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: 0.4s;
+        }
+
+        .grade-card:hover .grade-icon {
+            transform: rotate(10deg) scale(1.1);
+            box-shadow: 0 15px 40px var(--shadow);
+        }
+
+        .grade-card h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .grade-card p {
+            color: var(--text);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .grade-card .badge-files {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--pink), var(--red));
+            color: white;
+            font-size: 0.8rem;
+            padding: 5px 20px;
+            border-radius: 50px;
+            margin-top: 10px;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(245, 87, 108, 0.3);
+        }
+
+        .grade-card .download-count {
+            font-size: 0.75rem;
+            color: var(--text);
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
 
         /* ===== بخش فصول ===== */
         .chapters-section {
@@ -1192,6 +1285,8 @@
         /* ===== واکنش‌گرا ===== */
         @media (max-width: 700px) {
             .container { padding: 20px 15px; }
+            .grade-card { min-width: 140px; padding: 18px 10px; }
+            .grade-card .grade-icon { width: 65px; height: 65px; line-height: 65px; font-size: 2.2rem; }
             .chapters-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
             .chapter-btn { padding: 14px 16px; }
             .chapter-btn .chapter-num { width: 40px; height: 40px; font-size: 0.9rem; }
@@ -1208,6 +1303,7 @@
         }
 
         @media (max-width: 480px) {
+            .grade-card .grade-icon { width: 55px; height: 55px; line-height: 55px; font-size: 1.8rem; }
             .chapters-grid { grid-template-columns: 1fr; }
             .link-card { padding: 18px; }
             .about-section .features { grid-template-columns: 1fr; }
@@ -1246,31 +1342,30 @@
         </div>
     </div>
 
-    <!-- ===== منوهای اصلی ===== --><div class="grade-card" data-grade="7" data-name="هفتم" data-downloads="1247">
-    <div class="grade-icon">
-        <img src="https://i.postimg.cc/vTc8zJHm/menu7.png" alt="ریاضی هفتم" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;">
+    <!-- ===== منوهای اصلی ===== -->
+    <div class="grades-menu" id="gradesMenu">
+        <div class="grade-card" data-grade="7" data-name="هفتم" data-downloads="1247">
+            <div class="grade-icon"><i class="fas fa-7"></i></div>
+            <h2>ریاضی هفتم</h2>
+            <p>پایه اول متوسطه</p>
+            <span class="badge-files"><i class="fas fa-star"></i> ۹ فصل</span>
+            <div class="download-count"><i class="fas fa-download"></i> ۱,۲۴۷ دانلود</div>
+        </div>
+        <div class="grade-card" data-grade="8" data-name="هشتم" data-downloads="983">
+            <div class="grade-icon"><i class="fas fa-8"></i></div>
+            <h2>ریاضی هشتم</h2>
+            <p>پایه دوم متوسطه</p>
+            <span class="badge-files"><i class="fas fa-star"></i> ۸ فصل</span>
+            <div class="download-count"><i class="fas fa-download"></i> ۹۸۳ دانلود</div>
+        </div>
+        <div class="grade-card" data-grade="9" data-name="نهم" data-downloads="756">
+            <div class="grade-icon"><i class="fas fa-9"></i></div>
+            <h2>ریاضی نهم</h2>
+            <p>پایه سوم متوسطه</p>
+            <span class="badge-files"><i class="fas fa-star"></i> ۸ فصل</span>
+            <div class="download-count"><i class="fas fa-download"></i> ۷۵۶ دانلود</div>
+        </div>
     </div>
-    <h2>ریاضی هفتم</h2>
-    <p>پایه اول متوسطه</p>
-    <span class="badge-files"><i class="fas fa-star"></i> ۹ فصل</span>
-    <div class="download-count"><i class="fas fa-download"></i> ۱,۲۴۷ دانلود</div>
-</div><div class="grade-card" data-grade="8" data-name="هشتم" data-downloads="983">
-    <div class="grade-icon">
-        <img src="https://i.postimg.cc/MHCwYXFL/menu8.png" alt="ریاضی هشتم" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;">
-    </div>
-    <h2>ریاضی هشتم</h2>
-    <p>پایه دوم متوسطه</p>
-    <span class="badge-files"><i class="fas fa-star"></i> ۸ فصل</span>
-    <div class="download-count"><i class="fas fa-download"></i> ۹۸۳ دانلود</div>
-</div><div class="grade-card" data-grade="9" data-name="نهم" data-downloads="756">
-    <div class="grade-icon">
-        <img src="https://i.postimg.cc/Xvs0zsP2/menu9.png" alt="ریاضی نهم" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;">
-    </div>
-    <h2>ریاضی نهم</h2>
-    <p>پایه سوم متوسطه</p>
-    <span class="badge-files"><i class="fas fa-star"></i> ۸ فصل</span>
-    <div class="download-count"><i class="fas fa-download"></i> ۷۵۶ دانلود</div>
-</div>
 
     <!-- ===== بخش فصول ===== -->
     <div class="chapters-section" id="chaptersSection">
