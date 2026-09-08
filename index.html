@@ -240,6 +240,7 @@ body::before {
 }
 
 /* ===== منوهای اصلی ===== */
+/* ===== منوهای اصلی (نسخه عکس) ===== */
 .grades-menu {
     display: flex;
     flex-wrap: wrap;
@@ -251,95 +252,32 @@ body::before {
 .grade-card {
     flex: 1 1 200px;
     min-width: 180px;
-    background: white;
-    border-radius: 35px;
-    padding: 25px 15px 20px;
+    background: transparent; /* پس‌زمینه را حذف می‌کنیم */
+    border: none; /* حذف حاشیه */
+    box-shadow: none; /* حذف سایه قبلی */
+    padding: 0; /* حذف پدینگ */
     text-align: center;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
-    border: 2px solid var(--border);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
     position: relative;
     overflow: hidden;
-}
-
-[data-theme="dark"] .grade-card {
-    background: var(--light-bg);
-}
-
-.grade-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    background: linear-gradient(90deg, var(--primary), var(--secondary), var(--pink));
-    opacity: 0;
-    transition: 0.4s;
-}
-
-.grade-card:hover::before {
-    opacity: 1;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .grade-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    border-color: var(--secondary);
-    box-shadow: 0 20px 60px var(--shadow);
+    transform: translateY(-10px) scale(1.03); /* افکت بزرگ شدن و بالا رفتن هنگام هاور */
 }
 
-.grade-card .grade-icon {
-    font-size: 2.8rem;
-    color: white;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    width: 80px;
-    height: 80px;
-    line-height: 80px;
-    border-radius: 50%;
-    margin: 0 auto 12px;
-    box-shadow: 0 10px 30px var(--shadow);
-    transition: 0.4s;
+.grade-card .grade-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 25px; /* گردی گوشه‌های عکس */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); /* سایه زیبا برای عکس */
+    transition: all 0.4s;
 }
 
-.grade-card:hover .grade-icon {
-    transform: rotate(10deg) scale(1.1);
-    box-shadow: 0 15px 40px var(--shadow);
-}
-
-.grade-card h2 {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--dark);
-    margin-bottom: 4px;
-}
-
-.grade-card p {
-    color: var(--text);
-    font-size: 0.95rem;
-    font-weight: 500;
-}
-
-.grade-card .badge-files {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--pink), var(--red));
-    color: white;
-    font-size: 0.8rem;
-    padding: 5px 20px;
-    border-radius: 50px;
-    margin-top: 10px;
-    font-weight: 700;
-    box-shadow: 0 5px 15px rgba(245, 87, 108, 0.3);
-}
-
-.grade-card .download-count {
-    font-size: 0.75rem;
-    color: var(--text);
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
+.grade-card:hover .grade-image {
+    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3); /* سایه قوی‌تر هنگام هاور */
 }
 
 /* ===== بخش فصول ===== */
@@ -1380,28 +1318,16 @@ body::before {
 
     <!-- ===== منوهای اصلی ===== -->
     <div class="grades-menu" id="gradesMenu">
-        <div class="grade-card" data-grade="7" data-name="هفتم" data-downloads="1247">
-            <div class="grade-icon"><i class="fas fa-7"></i></div>
-            <h2>ریاضی هفتم</h2>
-            <p>پایه اول متوسطه</p>
-            <span class="badge-files"><i class="fas fa-star"></i> ۹ فصل</span>
-            <div class="download-count"><i class="fas fa-download"></i> ۱,۲۴۷ دانلود</div>
-        </div>
-        <div class="grade-card" data-grade="8" data-name="هشتم" data-downloads="983">
-            <div class="grade-icon"><i class="fas fa-8"></i></div>
-            <h2>ریاضی هشتم</h2>
-            <p>پایه دوم متوسطه</p>
-            <span class="badge-files"><i class="fas fa-star"></i> ۸ فصل</span>
-            <div class="download-count"><i class="fas fa-download"></i> ۹۸۳ دانلود</div>
-        </div>
-        <div class="grade-card" data-grade="9" data-name="نهم" data-downloads="756">
-            <div class="grade-icon"><i class="fas fa-9"></i></div>
-            <h2>ریاضی نهم</h2>
-            <p>پایه سوم متوسطه</p>
-            <span class="badge-files"><i class="fas fa-star"></i> ۸ فصل</span>
-            <div class="download-count"><i class="fas fa-download"></i> ۷۵۶ دانلود</div>
-        </div>
+    <div class="grade-card" data-grade="7" data-name="هفتم" data-downloads="1247">
+        <img src="https://i.postimg.cc/vTc8zJHm/menu7.png" alt="ریاضی هفتم" class="grade-image">
     </div>
+    <div class="grade-card" data-grade="8" data-name="هشتم" data-downloads="983">
+        <img src="https://i.postimg.cc/MHCwYXFL/menu8.png" alt="ریاضی هشتم" class="grade-image">
+    </div>
+    <div class="grade-card" data-grade="9" data-name="نهم" data-downloads="756">
+        <img src="https://i.postimg.cc/Xvs0zsP2/menu9.png" alt="ریاضی نهم" class="grade-image">
+    </div>
+</div>
 
     <!-- ===== بخش فصول ===== -->
     <div class="chapters-section" id="chaptersSection">
