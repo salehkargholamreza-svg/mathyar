@@ -1347,7 +1347,26 @@ body::before {
     <!-- ===== هدر ===== -->
     <div class="header">
         <img src="https://i.postimg.cc/Nj8ySkTd/header1.png" alt="not imege"  style="width: 100%; height: auto; display: block; border-radius: 50px 50px 30px 30px;">
-    <!-- ===== دکمه بازگشت ===== -->
+       
+<!-- ===== افکت تبلیغاتی ===== -->
+ <div class="promo-badge" id="promoBadge">
+        <div class="badge-content" onclick="handlePromoClick()">
+            <div class="promo-ripple"></div>
+            <div class="promo-ripple"></div>
+            <div class="promo-ripple"></div>
+            <div class="badge-icon"><i class="fas fa-gift"></i></div>
+            <div class="badge-text">
+                <span class="title">رزرو و ثبت نام کلاس خصوصی آنلاین کلیک کنید</span>
+                <span class="subtitle">ریاضی هفتم و هشتم و نهم</span>
+                <span class="highlight">مدرس: استاد صالح کار</span>
+            </div>
+            <div class="close-badge" onclick="event.stopPropagation(); closePromo();">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+    </div>
+
+        <!-- ===== دکمه بازگشت ===== -->
     <div class="back-row" id="backRow">
         <button class="back-btn" id="backBtn">
             <i class="fas fa-arrow-right"></i> بازگشت
@@ -1597,24 +1616,6 @@ body::before {
         </div>
     </div>
 </div>
-<!-- ===== افکت تبلیغاتی ===== -->
- <div class="promo-badge" id="promoBadge">
-        <div class="badge-content" onclick="handlePromoClick()">
-            <div class="promo-ripple"></div>
-            <div class="promo-ripple"></div>
-            <div class="promo-ripple"></div>
-            <div class="badge-icon"><i class="fas fa-gift"></i></div>
-            <div class="badge-text">
-                <span class="title">رزرو و ثبت نام کلاس خصوصی آنلاین کلیک کنید</span>
-                <span class="subtitle">ریاضی هفتم و هشتم و نهم</span>
-                <span class="highlight">مدرس: استاد صالح کار</span>
-            </div>
-            <div class="close-badge" onclick="event.stopPropagation(); closePromo();">
-                <i class="fas fa-times"></i>
-            </div>
-        </div>
-    </div>
-
 <script>
     (function() {
         // ===== دیتا =====
