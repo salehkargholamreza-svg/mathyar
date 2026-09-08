@@ -1398,72 +1398,69 @@ body::before {
     <ul style="display: flex; justify-content: center; align-items: center; gap: 30px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap;">
         
         <!-- ===== منوی ریاضی هفتم ===== -->
-        <li style="position: relative; padding: 8px 0;">
-            <a href="#" onclick="toggleDropdown(this); return false;" style="color: white; text-decoration: none; font-weight: 700; font-size: 1.1rem; padding: 8px 20px; display: block; border-radius: 30px; transition: 0.3s; background: rgba(255,255,255,0.1);">
-                <i class="fas fa-7" style="margin-left: 8px;"></i> ریاضی هفتم
-                <i class="fas fa-chevron-down" style="margin-right: 8px; font-size: 0.7rem; transition: transform 0.3s ease;"></i>
-            </a>
-            <ul class="dropdown" style="position: absolute; top: 100%; right: 0; background: white; border-radius: 20px; padding: 12px 0; min-width: 220px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); display: none; border: 2px solid var(--border); z-index: 1000; list-style: none; max-height: 400px; overflow-y: auto;">
-                <!-- زیرمنوهای هفتم -->
-                <li><a href="#" onclick="window.showChapterDetail('7', 1); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📘 راهبردهای حل مسئله</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('7', 2); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">🔢 عددهای صحیح</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('7', 3); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">✖️ جبر و معادله</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('7', 4); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📐 هندسه و استدلال</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('7', 5); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📊 نمونه سوالات نوبت اول</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('7', 6); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📦 شمارنده‌ها و اعداد اول</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('7', 7); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📐 سطح و حجم</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('7', 8); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">⚡ توان و جذر</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('7', 9); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📍 بردار و مختصات</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('7', 10); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📊 آمار و احتمال</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('7', 11); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📝 نمونه سوالات نوبت دوم</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('7', 12); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">⭐ تیزهوشان هفتم</a></li>
-            </ul>
-        </li>
+<li style="position: relative; padding: 8px 0;">
+    <a href="#" onclick="toggleDropdown(this); return false;" style="color: white; text-decoration: none; font-weight: 700; font-size: 1.1rem; padding: 8px 20px; display: block; border-radius: 30px; transition: 0.3s; background: rgba(255,255,255,0.1);">
+        <i class="fas fa-7" style="margin-left: 8px;"></i> ریاضی هفتم
+        <i class="fas fa-chevron-down" style="margin-right: 8px; font-size: 0.7rem; transition: transform 0.3s ease;"></i>
+    </a>
+    <ul class="dropdown" style="position: absolute; top: 100%; right: 0; background: white; border-radius: 20px; padding: 12px 0; min-width: 220px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); display: none; border: 2px solid var(--border); z-index: 1000; list-style: none; max-height: 400px; overflow-y: auto;">
+        <li><a href="#" onclick="window.open('?grade=7&chapter=1', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📘 راهبردهای حل مسئله</a></li>
+        <li><a href="#" onclick="window.open('?grade=7&chapter=2', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">🔢 عددهای صحیح</a></li>
+        <li><a href="#" onclick="window.open('?grade=7&chapter=3', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">✖️ جبر و معادله</a></li>
+        <li><a href="#" onclick="window.open('?grade=7&chapter=4', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📐 هندسه و استدلال</a></li>
+        <li><a href="#" onclick="window.open('?grade=7&chapter=5', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📊 نمونه سوالات نوبت اول</a></li>
+        <li><a href="#" onclick="window.open('?grade=7&chapter=6', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📦 شمارنده‌ها و اعداد اول</a></li>
+        <li><a href="#" onclick="window.open('?grade=7&chapter=7', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📐 سطح و حجم</a></li>
+        <li><a href="#" onclick="window.open('?grade=7&chapter=8', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">⚡ توان و جذر</a></li>
+        <li><a href="#" onclick="window.open('?grade=7&chapter=9', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📍 بردار و مختصات</a></li>
+        <li><a href="#" onclick="window.open('?grade=7&chapter=10', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📊 آمار و احتمال</a></li>
+        <li><a href="#" onclick="window.open('?grade=7&chapter=11', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📝 نمونه سوالات نوبت دوم</a></li>
+        <li><a href="#" onclick="window.open('?grade=7&chapter=12', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">⭐ تیزهوشان هفتم</a></li>
+    </ul>
+</li>
         
         <!-- ===== منوی ریاضی هشتم ===== -->
-        <li style="position: relative; padding: 8px 0;">
-            <a href="#" onclick="toggleDropdown(this); return false;" style="color: white; text-decoration: none; font-weight: 700; font-size: 1.1rem; padding: 8px 20px; display: block; border-radius: 30px; transition: 0.3s; background: rgba(255,255,255,0.1);">
-                <i class="fas fa-8" style="margin-left: 8px;"></i> ریاضی هشتم
-                <i class="fas fa-chevron-down" style="margin-right: 8px; font-size: 0.7rem; transition: transform 0.3s ease;"></i>
-            </a>
-            <ul class="dropdown" style="position: absolute; top: 100%; right: 0; background: white; border-radius: 20px; padding: 12px 0; min-width: 220px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); display: none; border: 2px solid var(--border); z-index: 1000; list-style: none; max-height: 400px; overflow-y: auto;">
-                <!-- زیرمنوهای هشتم -->
-                <li><a href="#" onclick="window.showChapterDetail('8', 1); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">🔢 عدد‌های صحیح و گویا</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('8', 2); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">🔢 عددهای اول</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('8', 3); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">🔷 چند‌ضلعی‌ها</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('8', 4); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">✖️ جبر و معادله</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('8', 5); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📊 نمونه سوالات نوبت اول</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('8', 6); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📍 بردار و مختصات</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('8', 7); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">🔺 مثلث</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('8', 8); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">⚡ توان و جذر</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('8', 9); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📊 آمار و احتمال</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('8', 10); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">⭕ دایره</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('8', 11); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📝 نمونه سوالات نوبت دوم</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('8', 12); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">⭐ تیزهوشان هشتم</a></li>
-            </ul>
-        </li>
+<li style="position: relative; padding: 8px 0;">
+    <a href="#" onclick="toggleDropdown(this); return false;" style="color: white; text-decoration: none; font-weight: 700; font-size: 1.1rem; padding: 8px 20px; display: block; border-radius: 30px; transition: 0.3s; background: rgba(255,255,255,0.1);">
+        <i class="fas fa-8" style="margin-left: 8px;"></i> ریاضی هشتم
+        <i class="fas fa-chevron-down" style="margin-right: 8px; font-size: 0.7rem; transition: transform 0.3s ease;"></i>
+    </a>
+    <ul class="dropdown" style="...">
+        <li><a href="#" onclick="window.open('?grade=8&chapter=1', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">🔢 عدد‌های صحیح و گویا</a></li>
+        <li><a href="#" onclick="window.open('?grade=8&chapter=2', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">🔢 عددهای اول</a></li>
+        <li><a href="#" onclick="window.open('?grade=8&chapter=3', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">🔷 چند‌ضلعی‌ها</a></li>
+        <li><a href="#" onclick="window.open('?grade=8&chapter=4', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">✖️ جبر و معادله</a></li>
+        <li><a href="#" onclick="window.open('?grade=8&chapter=5', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📊 نمونه سوالات نوبت اول</a></li>
+        <li><a href="#" onclick="window.open('?grade=8&chapter=6', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📍 بردار و مختصات</a></li>
+        <li><a href="#" onclick="window.open('?grade=8&chapter=7', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">🔺 مثلث</a></li>
+        <li><a href="#" onclick="window.open('?grade=8&chapter=8', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">⚡ توان و جذر</a></li>
+        <li><a href="#" onclick="window.open('?grade=8&chapter=9', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📊 آمار و احتمال</a></li>
+        <li><a href="#" onclick="window.open('?grade=8&chapter=10', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">⭕ دایره</a></li>
+        <li><a href="#" onclick="window.open('?grade=8&chapter=11', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📝 نمونه سوالات نوبت دوم</a></li>
+        <li><a href="#" onclick="window.open('?grade=8&chapter=12', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">⭐ تیزهوشان هشتم</a></li>
+    </ul>
+</li>
         
         <!-- ===== منوی ریاضی نهم ===== -->
-        <li style="position: relative; padding: 8px 0;">
-            <a href="#" onclick="toggleDropdown(this); return false;" style="color: white; text-decoration: none; font-weight: 700; font-size: 1.1rem; padding: 8px 20px; display: block; border-radius: 30px; transition: 0.3s; background: rgba(255,255,255,0.1);">
-                <i class="fas fa-9" style="margin-left: 8px;"></i> ریاضی نهم
-                <i class="fas fa-chevron-down" style="margin-right: 8px; font-size: 0.7rem; transition: transform 0.3s ease;"></i>
-            </a>
-            <ul class="dropdown" style="position: absolute; top: 100%; right: 0; background: white; border-radius: 20px; padding: 12px 0; min-width: 220px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); display: none; border: 2px solid var(--border); z-index: 1000; list-style: none; max-height: 400px; overflow-y: auto;">
-                <!-- زیرمنوهای نهم -->
-                <li><a href="#" onclick="window.showChapterDetail('9', 1); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">🧮 مجموعه‌ها</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('9', 2); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">🔢 عدد‌های حقیقی</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('9', 3); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📐 استدلال و اثبات در هندسه</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('9', 4); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">⚡ توان و ریشه</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('9', 5); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📊 نمونه سوالات نوبت اول</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('9', 6); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📝 عبارت‌های جبری</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('9', 7); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📈 خط و معادله‌های خطی</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('9', 8); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">➗ عبارت‌های گویا</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('9', 9); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📦 حجم و مساحت</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('9', 10); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📝 نوبت دوم و نهایی</a></li>
-                <li><a href="#" onclick="window.showChapterDetail('9', 11); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">⭐ تیزهوشان نهم</a></li>
-            </ul>
-        </li>
+<li style="position: relative; padding: 8px 0;">
+    <a href="#" onclick="toggleDropdown(this); return false;" style="color: white; text-decoration: none; font-weight: 700; font-size: 1.1rem; padding: 8px 20px; display: block; border-radius: 30px; transition: 0.3s; background: rgba(255,255,255,0.1);">
+        <i class="fas fa-9" style="margin-left: 8px;"></i> ریاضی نهم
+        <i class="fas fa-chevron-down" style="margin-right: 8px; font-size: 0.7rem; transition: transform 0.3s ease;"></i>
+    </a>
+    <ul class="dropdown" style="...">
+        <li><a href="#" onclick="window.open('?grade=9&chapter=1', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">🧮 مجموعه‌ها</a></li>
+        <li><a href="#" onclick="window.open('?grade=9&chapter=2', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">🔢 عدد‌های حقیقی</a></li>
+        <li><a href="#" onclick="window.open('?grade=9&chapter=3', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📐 استدلال و اثبات در هندسه</a></li>
+        <li><a href="#" onclick="window.open('?grade=9&chapter=4', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">⚡ توان و ریشه</a></li>
+        <li><a href="#" onclick="window.open('?grade=9&chapter=5', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📊 نمونه سوالات نوبت اول</a></li>
+        <li><a href="#" onclick="window.open('?grade=9&chapter=6', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📝 عبارت‌های جبری</a></li>
+        <li><a href="#" onclick="window.open('?grade=9&chapter=7', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📈 خط و معادله‌های خطی</a></li>
+        <li><a href="#" onclick="window.open('?grade=9&chapter=8', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">➗ عبارت‌های گویا</a></li>
+        <li><a href="#" onclick="window.open('?grade=9&chapter=9', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📦 حجم و مساحت</a></li>
+        <li><a href="#" onclick="window.open('?grade=9&chapter=10', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📝 نوبت دوم و نهایی</a></li>
+        <li><a href="#" onclick="window.open('?grade=9&chapter=11', '_blank'); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">⭐ تیزهوشان نهم</a></li>
+    </ul>
+</li>
         
     </ul>
 </nav>
