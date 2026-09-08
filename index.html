@@ -1227,9 +1227,9 @@ body::before {
     opacity: 1 !important;
     pointer-events: auto !important;
 }
-/* ===== تبلیغ گوشه سایت (همیشه ثابت در گوشه چپ پایین) ===== */
+/* ===== تبلیغ گوشه سایت (همراه با اسکرول و همیشه جلوی دید) ===== */
 .promo-badge {
-    position: fixed !important;
+    position: sticky !important;
     bottom: 30px !important;
     left: 30px !important;
     z-index: 99999 !important;
@@ -1242,6 +1242,8 @@ body::before {
     pointer-events: auto !important;
     width: fit-content;
     max-width: 280px;
+    align-self: flex-start;  /* برای چسبیدن به بالا */
+    margin-top: auto;        /* برای ماندن در پایین کانتینر */
 }
 
 .promo-badge:hover {
