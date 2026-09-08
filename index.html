@@ -1135,20 +1135,16 @@ body::before {
         
 /* ===== تبلیغ گوشه سایت (شناور) ===== */
 .promo-badge {
-    position: sticky;
-    bottom: 30px;
-    right: 30px;
-    z-index: 99999;
+    position: relative;
+    z-index: 1;
     cursor: pointer;
     animation: floatBadge 3s ease-in-out infinite;
     transition: 0.3s;
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
-    pointer-events: auto !important;
     width: fit-content;
-    margin-left: auto;
-    margin-right: 0;
+    margin: 30px auto 20px 30px;
 }
 
 .promo-badge:hover {
