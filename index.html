@@ -1135,13 +1135,20 @@ body::before {
         
 /* ===== تبلیغ گوشه سایت (شناور) ===== */
 .promo-badge {
-    position: fixed;
+    position: sticky;
     bottom: 30px;
-    left: 30px;
-    z-index: 9998;
+    right: 30px;
+    z-index: 99999;
     cursor: pointer;
     animation: floatBadge 3s ease-in-out infinite;
     transition: 0.3s;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: 0;
 }
 
 .promo-badge:hover {
@@ -1599,22 +1606,22 @@ body::before {
     </div>
 </div>
 <!-- ===== افکت تبلیغاتی ===== -->
-<div class="promo-badge" id="promoBadge">
-    <div class="badge-content" onclick="handlePromoClick()">
-        <div class="promo-ripple"></div>
-        <div class="promo-ripple"></div>
-        <div class="promo-ripple"></div>
-        <div class="badge-icon"><i class="fas fa-gift"></i></div>
-        <div class="badge-text">
-            <span class="title">رزرو و ثبت نام کلاس خصوصی آنلاین کلیک کنید </span>
-            <span class="subtitle">ریاضی هفتم و هشتم و نهم </span>
-            <span class="highlight">مدرس:استاد صالح کار</span>
-        </div>
-        <div class="close-badge" onclick="event.stopPropagation(); closePromo();">
-            <i class="fas fa-times"></i>
+ <div class="promo-badge" id="promoBadge">
+        <div class="badge-content" onclick="handlePromoClick()">
+            <div class="promo-ripple"></div>
+            <div class="promo-ripple"></div>
+            <div class="promo-ripple"></div>
+            <div class="badge-icon"><i class="fas fa-gift"></i></div>
+            <div class="badge-text">
+                <span class="title">رزرو و ثبت نام کلاس خصوصی آنلاین کلیک کنید</span>
+                <span class="subtitle">ریاضی هفتم و هشتم و نهم</span>
+                <span class="highlight">مدرس: استاد صالح کار</span>
+            </div>
+            <div class="close-badge" onclick="event.stopPropagation(); closePromo();">
+                <i class="fas fa-times"></i>
+            </div>
         </div>
     </div>
-</div>
 
 <script>
     (function() {
