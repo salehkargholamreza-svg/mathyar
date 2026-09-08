@@ -1277,7 +1277,21 @@ body::before {
 ::-webkit-scrollbar-track { background: var(--border); border-radius: 10px; }
 ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 10px; }
 ::-webkit-scrollbar-thumb:hover { background: linear-gradient(135deg, var(--secondary), var(--pink)); }
-/* ===== منوی آبشاری ===== */
+/* ===== انیمیشن چرخش آیکون منو ===== */
+.navbar .fa-chevron-down {
+    transition: transform 0.3s ease;
+}
+
+.navbar .dropdown {
+    display: none;
+    animation: dropDown 0.3s ease;
+}
+
+@keyframes dropDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+        /* ===== منوی آبشاری ===== */
 .navbar {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     padding: 12px 20px;
@@ -1379,18 +1393,18 @@ body::before {
     <!-- ====================================================== -->
     <!-- ===== ✅ منوی آبشاری - اینجا قرار دهید ===== -->
     <!-- ====================================================== -->
- <!-- ===== منوی آبشاری ===== -->
-<nav class="navbar" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); padding: 12px 20px; border-radius: 20px; margin: 15px 0 0; position: relative; z-index: 1000;">
+ <!-- ===== منوی آبشاری با کلیک ===== -->
+<nav class="navbar" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); padding: 12px 20px; border-radius: 20px; margin: 0 0 15px 0; position: relative; z-index: 1000;">
     <ul style="display: flex; justify-content: center; align-items: center; gap: 30px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap;">
         
-        <!-- ===== منوی ریاضی هفتم (همه فصل‌ها) ===== -->
+        <!-- ===== منوی ریاضی هفتم ===== -->
         <li style="position: relative; padding: 8px 0;">
-            <a href="#" onclick="showChapters('7', 'هفتم'); return false;" style="color: white; text-decoration: none; font-weight: 700; font-size: 1.1rem; padding: 8px 20px; display: block; border-radius: 30px; transition: 0.3s; background: rgba(255,255,255,0.1);">
+            <a href="#" onclick="toggleDropdown(this); return false;" style="color: white; text-decoration: none; font-weight: 700; font-size: 1.1rem; padding: 8px 20px; display: block; border-radius: 30px; transition: 0.3s; background: rgba(255,255,255,0.1);">
                 <i class="fas fa-7" style="margin-left: 8px;"></i> ریاضی هفتم
-                <i class="fas fa-chevron-down" style="margin-right: 8px; font-size: 0.7rem;"></i>
+                <i class="fas fa-chevron-down" style="margin-right: 8px; font-size: 0.7rem; transition: transform 0.3s ease;"></i>
             </a>
-            <!-- زیرمنوهای هفتم (همه فصل‌ها) -->
             <ul class="dropdown" style="position: absolute; top: 100%; right: 0; background: white; border-radius: 20px; padding: 12px 0; min-width: 220px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); display: none; border: 2px solid var(--border); z-index: 1000; list-style: none; max-height: 400px; overflow-y: auto;">
+                <!-- زیرمنوهای هفتم -->
                 <li><a href="#" onclick="window.showChapterDetail('7', 1); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📘 راهبردهای حل مسئله</a></li>
                 <li><a href="#" onclick="window.showChapterDetail('7', 2); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">🔢 عددهای صحیح</a></li>
                 <li><a href="#" onclick="window.showChapterDetail('7', 3); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">✖️ جبر و معادله</a></li>
@@ -1406,13 +1420,14 @@ body::before {
             </ul>
         </li>
         
-        <!-- ===== منوی ریاضی هشتم (همه فصل‌ها) ===== -->
+        <!-- ===== منوی ریاضی هشتم ===== -->
         <li style="position: relative; padding: 8px 0;">
-            <a href="#" onclick="showChapters('8', 'هشتم'); return false;" style="color: white; text-decoration: none; font-weight: 700; font-size: 1.1rem; padding: 8px 20px; display: block; border-radius: 30px; transition: 0.3s; background: rgba(255,255,255,0.1);">
+            <a href="#" onclick="toggleDropdown(this); return false;" style="color: white; text-decoration: none; font-weight: 700; font-size: 1.1rem; padding: 8px 20px; display: block; border-radius: 30px; transition: 0.3s; background: rgba(255,255,255,0.1);">
                 <i class="fas fa-8" style="margin-left: 8px;"></i> ریاضی هشتم
-                <i class="fas fa-chevron-down" style="margin-right: 8px; font-size: 0.7rem;"></i>
+                <i class="fas fa-chevron-down" style="margin-right: 8px; font-size: 0.7rem; transition: transform 0.3s ease;"></i>
             </a>
             <ul class="dropdown" style="position: absolute; top: 100%; right: 0; background: white; border-radius: 20px; padding: 12px 0; min-width: 220px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); display: none; border: 2px solid var(--border); z-index: 1000; list-style: none; max-height: 400px; overflow-y: auto;">
+                <!-- زیرمنوهای هشتم -->
                 <li><a href="#" onclick="window.showChapterDetail('8', 1); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">🔢 عدد‌های صحیح و گویا</a></li>
                 <li><a href="#" onclick="window.showChapterDetail('8', 2); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">🔢 عددهای اول</a></li>
                 <li><a href="#" onclick="window.showChapterDetail('8', 3); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">🔷 چند‌ضلعی‌ها</a></li>
@@ -1428,13 +1443,14 @@ body::before {
             </ul>
         </li>
         
-        <!-- ===== منوی ریاضی نهم (همه فصل‌ها) ===== -->
+        <!-- ===== منوی ریاضی نهم ===== -->
         <li style="position: relative; padding: 8px 0;">
-            <a href="#" onclick="showChapters('9', 'نهم'); return false;" style="color: white; text-decoration: none; font-weight: 700; font-size: 1.1rem; padding: 8px 20px; display: block; border-radius: 30px; transition: 0.3s; background: rgba(255,255,255,0.1);">
+            <a href="#" onclick="toggleDropdown(this); return false;" style="color: white; text-decoration: none; font-weight: 700; font-size: 1.1rem; padding: 8px 20px; display: block; border-radius: 30px; transition: 0.3s; background: rgba(255,255,255,0.1);">
                 <i class="fas fa-9" style="margin-left: 8px;"></i> ریاضی نهم
-                <i class="fas fa-chevron-down" style="margin-right: 8px; font-size: 0.7rem;"></i>
+                <i class="fas fa-chevron-down" style="margin-right: 8px; font-size: 0.7rem; transition: transform 0.3s ease;"></i>
             </a>
             <ul class="dropdown" style="position: absolute; top: 100%; right: 0; background: white; border-radius: 20px; padding: 12px 0; min-width: 220px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); display: none; border: 2px solid var(--border); z-index: 1000; list-style: none; max-height: 400px; overflow-y: auto;">
+                <!-- زیرمنوهای نهم -->
                 <li><a href="#" onclick="window.showChapterDetail('9', 1); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">🧮 مجموعه‌ها</a></li>
                 <li><a href="#" onclick="window.showChapterDetail('9', 2); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">🔢 عدد‌های حقیقی</a></li>
                 <li><a href="#" onclick="window.showChapterDetail('9', 3); return false;" style="display: block; padding: 10px 25px; color: var(--dark); text-decoration: none; transition: 0.3s; font-weight: 500; border-right: 3px solid transparent;">📐 استدلال و اثبات در هندسه</a></li>
@@ -2658,6 +2674,53 @@ body::before {
         console.log('📚 هفتم: ۹ فصل | هشتم: ۸ فصل | نهم: ۸ فصل');
         console.log('📄 هر فصل شامل ۶ فایل PDF برای دانلود است.');
     })();
+    // ===== منوی آبشاری با کلیک =====
+function toggleDropdown(element) {
+    // جلوگیری از بسته شدن ناخواسته
+    event.preventDefault();
+    event.stopPropagation();
+    
+    // پیدا کردن منوی والد
+    const parentLi = element.closest('li');
+    const dropdown = parentLi.querySelector('.dropdown');
+    const icon = element.querySelector('.fa-chevron-down');
+    
+    // بستن همه منوهای دیگر
+    document.querySelectorAll('.navbar .dropdown').forEach(function(d) {
+        if (d !== dropdown) {
+            d.style.display = 'none';
+            const parent = d.closest('li');
+            if (parent) {
+                const icon = parent.querySelector('.fa-chevron-down');
+                if (icon) icon.style.transform = 'rotate(0deg)';
+            }
+        }
+    });
+    
+    // تغییر وضعیت منوی فعلی
+    if (dropdown.style.display === 'block') {
+        dropdown.style.display = 'none';
+        if (icon) icon.style.transform = 'rotate(0deg)';
+    } else {
+        dropdown.style.display = 'block';
+        if (icon) icon.style.transform = 'rotate(180deg)';
+    }
+}
+
+// ===== بستن منوها با کلیک خارج از منو =====
+document.addEventListener('click', function(event) {
+    const isClickInside = event.target.closest('.navbar');
+    if (!isClickInside) {
+        document.querySelectorAll('.navbar .dropdown').forEach(function(d) {
+            d.style.display = 'none';
+            const parent = d.closest('li');
+            if (parent) {
+                const icon = parent.querySelector('.fa-chevron-down');
+                if (icon) icon.style.transform = 'rotate(0deg)';
+            }
+        });
+    }
+});
 </script>
 
 </body>
