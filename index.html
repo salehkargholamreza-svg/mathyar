@@ -1132,7 +1132,7 @@ body::before {
     color: white;
     transform: scale(1.1);
 }
-
+        
 /* ===== تبلیغ گوشه سایت (شناور) ===== */
 .promo-badge {
     position: fixed;
@@ -1288,6 +1288,18 @@ body::before {
 @keyframes rippleEffect {
     0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
     100% { transform: translate(-50%, -50%) scale(1.3); opacity: 0; }
+}
+
+/* ===== اطمینان از نمایش کامل تبلیغ ===== */
+.promo-badge {
+    position: fixed !important;
+    bottom: 30px;
+    left: 30px;
+    z-index: 99999 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
 }
 
 /* ===== واکنش‌گرایی ===== */
