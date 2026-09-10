@@ -1545,11 +1545,36 @@ body::before {
     </ul>
 </nav>
        <!-- ===== عکس هدر ===== -->
-<!-- ===== عکس هدر (با لینک) ===== -->
-<!-- ===== عکس هدر (با لینک) ===== -->
-<a href="https://onlineamoozan.ir/c/60786" target="_blank" title="MathYar">
-    <img src="https://i.postimg.cc/Nj8ySkTd/header1.png" alt="MathYar" style="width: 100%; height: auto; display: block; border-radius: 50px 50px 30px 30px; cursor: pointer;">
-</a>
+<!-- ===== هدر اسلایدر خودکار ===== -->
+<div class="header-slider" style="position: relative; width: 100%; height: auto; overflow: hidden; border-radius: 50px 50px 30px 30px; margin-top: 15px;">
+    <a href="https://onlineamoozan.ir/c/60786" target="_blank" title="MathYar" style="display: block; text-decoration: none;">
+        <img src="https://i.postimg.cc/VvjRyxvN/header7.png" class="slide active" style="width: 100%; height: auto; display: block; border-radius: 50px 50px 30px 30px; transition: opacity 1s ease-in-out; cursor: pointer;">
+        <img src="https://i.postimg.cc/rm4GWBSC/header8.png" class="slide" style="width: 100%; height: auto; display: none; border-radius: 50px 50px 30px 30px; transition: opacity 1s ease-in-out; cursor: pointer;">
+        <img src="https://i.postimg.cc/jSjzvwHS/header9.png" class="slide" style="width: 100%; height: auto; display: none; border-radius: 50px 50px 30px 30px; transition: opacity 1s ease-in-out; cursor: pointer;">
+    </a>
+</div>
+
+<script>
+    // ===== اسلایدر خودکار هدر =====
+    (function() {
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.header-slider .slide');
+        if (slides.length === 0) return;
+        
+        function nextSlide() {
+            // مخفی کردن عکس فعلی
+            slides[currentSlide].style.display = 'none';
+            // رفتن به عکس بعدی
+            currentSlide = (currentSlide + 1) % slides.length;
+            // نمایش عکس جدید
+            slides[currentSlide].style.display = 'block';
+        }
+        
+        // تغییر عکس هر ۳ ثانیه
+        setInterval(nextSlide, 3000);
+        console.log('✅ اسلایدر هدر فعال شد - ' + slides.length + ' عکس');
+    })();
+</script>
     <!-- ====================================================== -->
     <!-- ===== ✅ پایان منوی آبشاری ===== -->
     <!-- ====================================================== -->
