@@ -1545,33 +1545,39 @@ body::before {
     </ul>
 </nav>
        <!-- ===== عکس هدر ===== -->
-<!-- ===== هدر اسلایدر خودکار (Slide - 5 ثانیه) ===== -->
+<!-- ===== هدر اسلایدر خودکار (Slide + Fade) ===== -->
 <div class="header-slider" style="position: relative; width: 100%; height: auto; overflow: hidden; border-radius: 50px 50px 30px 30px; margin-top: 15px;">
-    <a href="https://onlineamoozan.ir/c/60786" target="_blank" title="MathYar" style="display: flex; text-decoration: none; width: 300%; transition: transform 1s ease-in-out;" id="sliderTrack">
-        <img src="https://salehkargholamreza-svg.github.io/mathyar/header7.png" style="width: 33.333%; height: auto; display: block; cursor: pointer;">
-        <img src="https://salehkargholamreza-svg.github.io/mathyar/header8.png" style="width: 33.333%; height: auto; display: block; cursor: pointer;">
-        <img src="https://salehkargholamreza-svg.github.io/mathyar/header9.png" style="width: 33.333%; height: auto; display: block; cursor: pointer;">
+    <a href="https://onlineamoozan.ir/c/60786" target="_blank" title="MathYar" style="display: block; text-decoration: none; position: relative;">
+        <img src="https://salehkargholamreza-svg.github.io/mathyar/header7.png" class="slide active" style="width: 100%; height: auto; display: block; border-radius: 50px 50px 30px 30px; cursor: pointer; position: relative; opacity: 1; transform: translateX(0); transition: all 1.2s ease-in-out;">
+        <img src="https://salehkargholamreza-svg.github.io/mathyar/header8.png" class="slide" style="width: 100%; height: auto; display: block; border-radius: 50px 50px 30px 30px; cursor: pointer; position: absolute; top: 0; left: 0; opacity: 0; transform: translateX(30px); transition: all 1.2s ease-in-out;">
+        <img src="https://salehkargholamreza-svg.github.io/mathyar/header9.png" class="slide" style="width: 100%; height: auto; display: block; border-radius: 50px 50px 30px 30px; cursor: pointer; position: absolute; top: 0; left: 0; opacity: 0; transform: translateX(30px); transition: all 1.2s ease-in-out;">
     </a>
 </div>
 
 <script>
-    // ===== اسلایدر خودکار هدر (Slide - 5 ثانیه) =====
+    // ===== اسلایدر خودکار هدر (Slide + Fade) =====
     (function() {
         let currentSlide = 0;
-        const track = document.getElementById('sliderTrack');
-        const totalSlides = 3;
+        const slides = document.querySelectorAll('.header-slider .slide');
         
-        if (!track) {
+        if (slides.length === 0) {
             console.log('❌ اسلایدر پیدا نشد');
             return;
         }
         
-        console.log('✅ اسلایدر فعال شد - سرعت: ۵ ثانیه');
+        console.log('✅ اسلایدر فعال شد (Slide + Fade) - تعداد عکس‌ها: ' + slides.length);
         
         function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            // در حالت RTL برای حرکت به چپ از translateX مثبت استفاده می‌کنیم
-            track.style.transform = 'translateX(' + (currentSlide * 33.333) + '%)';
+            // مخفی کردن عکس فعلی با محو شدن و حرکت به چپ
+            slides[currentSlide].style.opacity = '0';
+            slides[currentSlide].style.transform = 'translateX(-30px)';
+            
+            // رفتن به عکس بعدی
+            currentSlide = (currentSlide + 1) % slides.length;
+            
+            // نمایش عکس جدید با محو شدن و حرکت از راست
+            slides[currentSlide].style.opacity = '1';
+            slides[currentSlide].style.transform = 'translateX(0)';
         }
         
         // تغییر عکس هر ۵ ثانیه
