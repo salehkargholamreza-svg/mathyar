@@ -1545,88 +1545,94 @@ body::before {
     </ul>
 </nav>
        <!-- ===== عکس هدر ===== -->
-<!-- ===== هدر اسلایدر با ورق زدن دستی (بدون دکمه) ===== -->
-<div class="header-slider" id="headerSlider" style="position: relative; width: 100%; height: auto; overflow: hidden; border-radius: 50px 50px 30px 30px; margin-top: 15px; cursor: grab; user-select: none;">
-    <a href="https://onlineamoozan.ir/c/60786" target="_blank" title="MathYar" id="sliderTrack" style="display: flex; text-decoration: none; width: 300%; transition: transform 0.8s ease-in-out;">
-        <img src="https://salehkargholamreza-svg.github.io/mathyar/header7.png" style="width: 33.333%; height: auto; display: block; cursor: pointer;" draggable="false">
-        <img src="https://salehkargholamreza-svg.github.io/mathyar/header8.png" style="width: 33.333%; height: auto; display: block; cursor: pointer;" draggable="false">
-        <img src="https://salehkargholamreza-svg.github.io/mathyar/header9.png" style="width: 33.333%; height: auto; display: block; cursor: pointer;" draggable="false">
+<!-- ===== هدر اسلایدر با ورق زدن دستی ===== -->
+<div id="headerSlider" style="position: relative; width: 100%; overflow: hidden; border-radius: 50px 50px 30px 30px; margin-top: 15px; touch-action: pan-y;">
+    <a href="https://onlineamoozan.ir/c/60786" target="_blank" title="MathYar" style="display: block; text-decoration: none;">
+        <div id="sliderTrack" style="display: flex; width: 300%; transition: transform 0.5s ease;">
+            <img src="https://salehkargholamreza-svg.github.io/mathyar/header7.png" style="width: 33.3333%; height: auto; display: block;" draggable="false">
+            <img src="https://salehkargholamreza-svg.github.io/mathyar/header8.png" style="width: 33.3333%; height: auto; display: block;" draggable="false">
+            <img src="https://salehkargholamreza-svg.github.io/mathyar/header9.png" style="width: 33.3333%; height: auto; display: block;" draggable="false">
+        </div>
     </a>
 </div>
 
 <script>
-    (function() {
-        let currentSlide = 0;
-        const totalSlides = 3;
-        const track = document.getElementById('sliderTrack');
-        const slider = document.getElementById('headerSlider');
+document.addEventListener('DOMContentLoaded', function() {
+    var slider = document.getElementById('headerSlider');
+    var track = document.getElementById('sliderTrack');
+    
+    if (!slider || !track) return;
+    
+    var current = 0;
+    var total = 3;
+    var startX = 0;
+    var isDown = false;
+    
+    function goTo(index) {
+        if (index < 0) index = total - 1;
+        if (index >= total) index = 0;
+        current = index;
+        track.style.transform = 'translateX(' + (current * 33.3333) + '%)';
+    }
+    
+    // اسلایدر خودکار
+    var auto = setInterval(function() { goTo(current + 1); }, 5000);
+    
+    function reset() {
+        clearInterval(auto);
+        auto = setInterval(function() { goTo(current + 1); }, 5000);
+    }
+    
+    // شروع لمس/کلیک
+    function start(x) {
+        startX = x;
+        isDown = true;
+    }
+    
+    // پایان لمس/کلیک
+    function end(x) {
+        if (!isDown) return;
+        isDown = false;
+        var diff = startX - x;
         
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            track.style.transform = 'translateX(' + (currentSlide * 33.333) + '%)';
+        if (diff > 50) {
+            goTo(current + 1);
+            reset();
+        } else if (diff < -50) {
+            goTo(current - 1);
+            reset();
         }
-        
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            track.style.transform = 'translateX(' + (currentSlide * 33.333) + '%)';
-        }
-        
-        // اسلایدر خودکار
-        let autoSlide = setInterval(nextSlide, 5000);
-        
-        function resetAutoSlide() {
-            clearInterval(autoSlide);
-            autoSlide = setInterval(nextSlide, 5000);
-        }
-        
-        // ورق زدن با لمس
-        let startX = 0;
-        slider.addEventListener('touchstart', function(e) {
-            startX = e.touches[0].clientX;
-        }, { passive: true });
-        
-        slider.addEventListener('touchend', function(e) {
-            const endX = e.changedTouches[0].clientX;
-            const diff = startX - endX;
-            
-            if (Math.abs(diff) > 50) {
-                if (diff > 0) nextSlide();
-                else prevSlide();
-                resetAutoSlide();
-            }
-        });
-        
-        // ورق زدن با ماوس
-        let mouseStartX = 0;
-        let isMouseDown = false;
-        
-        slider.addEventListener('mousedown', function(e) {
-            mouseStartX = e.clientX;
-            isMouseDown = true;
-            e.preventDefault();
-        });
-        
-        slider.addEventListener('mouseup', function(e) {
-            if (!isMouseDown) return;
-            isMouseDown = false;
-            const diff = mouseStartX - e.clientX;
-            
-            if (Math.abs(diff) > 50) {
-                if (diff > 0) nextSlide();
-                else prevSlide();
-                resetAutoSlide();
-            }
-        });
-        
-        // توقف هنگام هاور
-        slider.addEventListener('mouseenter', function() {
-            clearInterval(autoSlide);
-        });
-        
-        slider.addEventListener('mouseleave', function() {
-            autoSlide = setInterval(nextSlide, 5000);
-        });
-    })();
+    }
+    
+    // موبایل
+    slider.addEventListener('touchstart', function(e) {
+        start(e.touches[0].clientX);
+    }, { passive: true });
+    
+    slider.addEventListener('touchend', function(e) {
+        end(e.changedTouches[0].clientX);
+    }, { passive: true });
+    
+    // دسکتاپ
+    slider.addEventListener('mousedown', function(e) {
+        start(e.clientX);
+        e.preventDefault();
+    });
+    
+    slider.addEventListener('mouseup', function(e) {
+        end(e.clientX);
+    });
+    
+    slider.addEventListener('mouseleave', function() {
+        isDown = false;
+    });
+    
+    // توقف خودکار هنگام هاور
+    slider.addEventListener('mouseenter', function() { clearInterval(auto); });
+    slider.addEventListener('mouseleave', function() { reset(); });
+    
+    console.log('✅ اسلایدر فعال شد');
+});
 </script>
     <!-- ====================================================== -->
     <!-- ===== ✅ پایان منوی آبشاری ===== -->
