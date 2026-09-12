@@ -1545,7 +1545,7 @@ body::before {
     </ul>
 </nav>
        <!-- ===== عکس هدر ===== -->
-<!-- ===== هدر اسلایدر با ورق زدن دستی ===== -->
+<!-- ===== هدر اسلایدر با دایره‌های نشانگر ===== -->
 <div id="headerSlider" style="position: relative; width: 100%; overflow: hidden; border-radius: 50px 50px 30px 30px; margin-top: 15px; touch-action: pan-y;">
     <a href="https://onlineamoozan.ir/c/60786" target="_blank" title="MathYar" style="display: block; text-decoration: none;">
         <div id="sliderTrack" style="display: flex; width: 300%; transition: transform 0.5s ease;">
@@ -1554,12 +1554,20 @@ body::before {
             <img src="https://salehkargholamreza-svg.github.io/mathyar/header9.png" style="width: 33.3333%; height: auto; display: block;" draggable="false">
         </div>
     </a>
+    
+    <!-- ===== دایره‌های نشانگر ===== -->
+    <div style="position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 10;">
+        <span class="slider-dot" data-index="0" style="width: 12px; height: 12px; border-radius: 50%; background: white; opacity: 1; cursor: pointer; transition: all 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.3); border: 2px solid rgba(255,255,255,0.8);"></span>
+        <span class="slider-dot" data-index="1" style="width: 12px; height: 12px; border-radius: 50%; background: white; opacity: 0.5; cursor: pointer; transition: all 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.3); border: 2px solid rgba(255,255,255,0.8);"></span>
+        <span class="slider-dot" data-index="2" style="width: 12px; height: 12px; border-radius: 50%; background: white; opacity: 0.5; cursor: pointer; transition: all 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.3); border: 2px solid rgba(255,255,255,0.8);"></span>
+    </div>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     var slider = document.getElementById('headerSlider');
     var track = document.getElementById('sliderTrack');
+    var dots = document.querySelectorAll('.slider-dot');
     
     if (!slider || !track) return;
     
@@ -1573,6 +1581,21 @@ document.addEventListener('DOMContentLoaded', function() {
         if (index >= total) index = 0;
         current = index;
         track.style.transform = 'translateX(' + (current * 33.3333) + '%)';
+        updateDots();
+    }
+    
+    function updateDots() {
+        dots.forEach(function(dot, i) {
+            if (i === current) {
+                dot.style.opacity = '1';
+                dot.style.transform = 'scale(1.3)';
+                dot.style.background = 'white';
+            } else {
+                dot.style.opacity = '0.5';
+                dot.style.transform = 'scale(1)';
+                dot.style.background = 'white';
+            }
+        });
     }
     
     // اسلایدر خودکار
@@ -1627,11 +1650,22 @@ document.addEventListener('DOMContentLoaded', function() {
         isDown = false;
     });
     
+    // کلیک روی دایره‌ها
+    dots.forEach(function(dot) {
+        dot.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var index = parseInt(this.getAttribute('data-index'));
+            goTo(index);
+            reset();
+        });
+    });
+    
     // توقف خودکار هنگام هاور
     slider.addEventListener('mouseenter', function() { clearInterval(auto); });
     slider.addEventListener('mouseleave', function() { reset(); });
     
-    console.log('✅ اسلایدر فعال شد');
+    console.log('✅ اسلایدر با دایره‌های نشانگر فعال شد');
 });
 </script>
     <!-- ====================================================== -->
