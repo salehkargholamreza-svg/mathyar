@@ -1545,43 +1545,87 @@ body::before {
     </ul>
 </nav>
        <!-- ===== عکس هدر ===== -->
-<!-- ===== هدر اسلایدر خودکار (Slide + Fade) ===== -->
-<div class="header-slider" style="position: relative; width: 100%; height: auto; overflow: hidden; border-radius: 50px 50px 30px 30px; margin-top: 15px;">
-    <a href="https://onlineamoozan.ir/c/60786" target="_blank" title="MathYar" style="display: block; text-decoration: none; position: relative;">
-        <img src="https://salehkargholamreza-svg.github.io/mathyar/header7.png" class="slide active" style="width: 100%; height: auto; display: block; border-radius: 50px 50px 30px 30px; cursor: pointer; position: relative; opacity: 1; transform: translateX(0); transition: all 1.2s ease-in-out;">
-        <img src="https://salehkargholamreza-svg.github.io/mathyar/header8.png" class="slide" style="width: 100%; height: auto; display: block; border-radius: 50px 50px 30px 30px; cursor: pointer; position: absolute; top: 0; left: 0; opacity: 0; transform: translateX(30px); transition: all 1.2s ease-in-out;">
-        <img src="https://salehkargholamreza-svg.github.io/mathyar/header9.png" class="slide" style="width: 100%; height: auto; display: block; border-radius: 50px 50px 30px 30px; cursor: pointer; position: absolute; top: 0; left: 0; opacity: 0; transform: translateX(30px); transition: all 1.2s ease-in-out;">
+<!-- ===== هدر اسلایدر با ورق زدن دستی (بدون دکمه) ===== -->
+<div class="header-slider" id="headerSlider" style="position: relative; width: 100%; height: auto; overflow: hidden; border-radius: 50px 50px 30px 30px; margin-top: 15px; cursor: grab; user-select: none;">
+    <a href="https://onlineamoozan.ir/c/60786" target="_blank" title="MathYar" id="sliderTrack" style="display: flex; text-decoration: none; width: 300%; transition: transform 0.8s ease-in-out;">
+        <img src="https://salehkargholamreza-svg.github.io/mathyar/header7.png" style="width: 33.333%; height: auto; display: block; cursor: pointer;" draggable="false">
+        <img src="https://salehkargholamreza-svg.github.io/mathyar/header8.png" style="width: 33.333%; height: auto; display: block; cursor: pointer;" draggable="false">
+        <img src="https://salehkargholamreza-svg.github.io/mathyar/header9.png" style="width: 33.333%; height: auto; display: block; cursor: pointer;" draggable="false">
     </a>
 </div>
 
 <script>
-    // ===== اسلایدر خودکار هدر (Slide + Fade) =====
     (function() {
         let currentSlide = 0;
-        const slides = document.querySelectorAll('.header-slider .slide');
-        
-        if (slides.length === 0) {
-            console.log('❌ اسلایدر پیدا نشد');
-            return;
-        }
-        
-        console.log('✅ اسلایدر فعال شد (Slide + Fade) - تعداد عکس‌ها: ' + slides.length);
+        const totalSlides = 3;
+        const track = document.getElementById('sliderTrack');
+        const slider = document.getElementById('headerSlider');
         
         function nextSlide() {
-            // مخفی کردن عکس فعلی با محو شدن و حرکت به چپ
-            slides[currentSlide].style.opacity = '0';
-            slides[currentSlide].style.transform = 'translateX(-30px)';
-            
-            // رفتن به عکس بعدی
-            currentSlide = (currentSlide + 1) % slides.length;
-            
-            // نمایش عکس جدید با محو شدن و حرکت از راست
-            slides[currentSlide].style.opacity = '1';
-            slides[currentSlide].style.transform = 'translateX(0)';
+            currentSlide = (currentSlide + 1) % totalSlides;
+            track.style.transform = 'translateX(' + (currentSlide * 33.333) + '%)';
         }
         
-        // تغییر عکس هر ۵ ثانیه
-        setInterval(nextSlide, 5000);
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            track.style.transform = 'translateX(' + (currentSlide * 33.333) + '%)';
+        }
+        
+        // اسلایدر خودکار
+        let autoSlide = setInterval(nextSlide, 5000);
+        
+        function resetAutoSlide() {
+            clearInterval(autoSlide);
+            autoSlide = setInterval(nextSlide, 5000);
+        }
+        
+        // ورق زدن با لمس
+        let startX = 0;
+        slider.addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        }, { passive: true });
+        
+        slider.addEventListener('touchend', function(e) {
+            const endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) nextSlide();
+                else prevSlide();
+                resetAutoSlide();
+            }
+        });
+        
+        // ورق زدن با ماوس
+        let mouseStartX = 0;
+        let isMouseDown = false;
+        
+        slider.addEventListener('mousedown', function(e) {
+            mouseStartX = e.clientX;
+            isMouseDown = true;
+            e.preventDefault();
+        });
+        
+        slider.addEventListener('mouseup', function(e) {
+            if (!isMouseDown) return;
+            isMouseDown = false;
+            const diff = mouseStartX - e.clientX;
+            
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) nextSlide();
+                else prevSlide();
+                resetAutoSlide();
+            }
+        });
+        
+        // توقف هنگام هاور
+        slider.addEventListener('mouseenter', function() {
+            clearInterval(autoSlide);
+        });
+        
+        slider.addEventListener('mouseleave', function() {
+            autoSlide = setInterval(nextSlide, 5000);
+        });
     })();
 </script>
     <!-- ====================================================== -->
