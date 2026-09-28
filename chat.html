@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>چت هوشمند | MathYar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== تنظیمات عمومی ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --pink: #f093fb;
+            --red: #f5576c;
+            --dark: #1a1a2e;
+            --text: #6b7280;
+            --light-bg: #f9fafb;
+            --border: #f0f0f0;
+            --shadow: rgba(102, 126, 234, 0.15);
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(255,255,255,0.03) 0%, transparent 50%);
+            animation: rotateBg 60s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes rotateBg {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ===== کانتینر چت ===== */
+        .chat-container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 40px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+            padding: 30px;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            height: 90vh;
+            max-height: 750px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* ===== هدر چت ===== */
+        .chat-header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 3px solid transparent;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--pink)) border-box;
+            border-image: linear-gradient(90deg, var(--primary), var(--secondary), var(--pink)) 1;
+            border-image-slice: 1;
+            position: relative;
+        }
+
+        .chat-header h1 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .chat-header h1 i {
+            background: linear-gradient(135deg, var(--pink), var(--red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2rem;
+        }
+
+        .chat-header p {
+            color: var(--text);
+            font-size: 0.9rem;
+            margin-top: 6px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            transform: translateX(-4px);
+            color: var(--secondary);
+        }
+
+        /* ===== باکس پیام‌ها ===== */
+        .chat-box {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 10px;
+            margin: 20px 0;
+            background: var(--light-bg);
+            border-radius: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            scroll-behavior: smooth;
+        }
+
+        .chat-box::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .chat-box::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .chat-box::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+        }
+
+        /* ===== پیام‌ها ===== */
+        .message {
+            padding: 14px 20px;
+            border-radius: 22px;
+            max-width: 85%;
+            line-height: 1.9;
+            font-size: 0.95rem;
+            animation: fadeIn 0.4s ease;
+            word-wrap: break-word;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.user {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            margin-right: auto;
+            border-bottom-right-radius: 5px;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .message.bot {
+            background: white;
+            color: var(--dark);
+            margin-left: auto;
+            border-bottom-left-radius: 5px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            border: 1px solid var(--border);
+        }
+
+        .message.bot a {
+            color: var(--secondary);
+            font-weight: 800;
+            text-decoration: none;
+            background: rgba(118, 75, 162, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 5px;
+            transition: 0.3s;
+        }
+
+        .message.bot a:hover {
+            background: rgba(118, 75, 162, 0.2);
+        }
+
+        .message.bot strong {
+            color: var(--primary);
+        }
+
+        .message.loading {
+            color: var(--text);
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .message.loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ===== ورودی کاربر ===== */
+        .user-input {
+            display: flex;
+            gap: 10px;
+            padding-top: 15px;
+            border-top: 2px solid var(--border);
+        }
+
+        .user-input input {
+            flex: 1;
+            padding: 15px 22px;
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            outline: none;
+            font-size: 0.95rem;
+            font-family: 'Vazirmatn', sans-serif;
+            background: var(--light-bg);
+            color: var(--dark);
+            transition: 0.3s;
+        }
+
+        .user-input input:focus {
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.15);
+        }
+
+        .user-input button {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 0.95rem;
+            font-family: 'Vazirmatn', sans-serif;
+            transition: 0.3s;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .user-input button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .user-input button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ===== پاسخ‌های پیشنهادی ===== */
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+            justify-content: center;
+        }
+
+        .quick-btn {
+            background: white;
+            border: 2px solid var(--border);
+            padding: 8px 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-family: 'Vazirmatn', sans-serif;
+            color: var(--dark);
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .quick-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.15);
+        }
+
+        /* ===== واکنش‌گرایی ===== */
+        @media (max-width: 600px) {
+            .chat-container {
+                padding: 20px 15px;
+                border-radius: 25px;
+                height: 95vh;
+            }
+
+            .chat-header h1 {
+                font-size: 1.4rem;
+            }
+
+            .message {
+                max-width: 90%;
+                font-size: 0.9rem;
+                padding: 12px 16px;
+            }
+
+            .user-input button {
+                padding: 15px 20px;
+            }
+
+            .user-input button span {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <!-- ===== هدر چت ===== -->
+    <div class="chat-header">
+        <h1><i class="fas fa-robot"></i> چت هوشمند MathYar</h1>
+        <p>دستیار ریاضی شما - بپرسید: «فصل‌های ریاضی هفتم»</p>
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-right"></i> بازگشت به صفحه اصلی
+        </a>
+    </div>
+
+    <!-- ===== باکس پیام‌ها ===== -->
+    <div class="chat-box" id="chatBox">
+        <div class="message bot">
+            سلام! 👋 من دستیار هوشمند <strong>MathYar</strong> هستم.<br>
+            می‌توانم فایل‌های آموزشی ریاضی هفتم، هشتم و نهم را به شما معرفی کنم.<br><br>
+            کافیست بگویید:<br>
+            🔹 «فصل‌های ریاضی هفتم»<br>
+            🔹 «فصل ۱ ریاضی هفتم»
+        </div>
+    </div>
+
+    <!-- ===== پاسخ‌های سریع ===== -->
+    <div class="quick-replies">
+        <button class="quick-btn" onclick="quickSend('فصل‌های ریاضی هفتم')">فصل‌های هفتم</button>
+        <button class="quick-btn" onclick="quickSend('فصل‌های ریاضی هشتم')">فصل‌های هشتم</button>
+        <button class="quick-btn" onclick="quickSend('فصل‌های ریاضی نهم')">فصل‌های نهم</button>
+    </div>
+
+    <!-- ===== ورودی کاربر ===== -->
+    <div class="user-input">
+        <input type="text" id="messageInput" placeholder="پیام خود را بنویسید..." 
+               onkeypress="if(event.key === 'Enter') sendMessage()">
+        <button onclick="sendMessage()" id="sendBtn">
+            <i class="fas fa-paper-plane"></i>
+            <span>ارسال</span>
+        </button>
+    </div>
+</div>
+
+<script>
+/* ==========================================================================
+   ===== کلید API OpenRouter - اینجا قرار دهید =====
+   ==========================================================================
+   
+   برای دریافت کلید API:
+   1. به سایت https://openrouter.ai بروید
+   2. ثبت‌نام کنید
+   3. به بخش Keys بروید
+   4. یک کلید جدید بسازید
+   5. کلید را در متغیر زیر جایگزین کنید
+   
+   ========================================================================== */
+const OPENROUTER_API_KEY = '';
+/* ==========================================================================
+   ===== پایان محل قرار دادن API Key =====
+   ========================================================================== */
+
+
+/* ==========================================================================
+   ===== داده‌های فصل‌ها (باید با داده‌های اصلی سایت یکسان باشد) =====
+   ========================================================================== */
+const chaptersData = {
+    '7': {
+        name: 'هفتم',
+        chapters: {
+            '1': { title: 'راهبردهای حل مسئله', url: 'https://s34.picofile.com/d/8490645134/281da28e-450b-4e74-bf6a-89587d1f4fcc/17t.pdf' },
+            '2': { title: 'عددهای صحیح', url: 'https://s34.picofile.com/d/8490649650/bf1a08d3-8358-4a0a-9fac-30551ed9b6db/27t.pdf' },
+            '3': { title: 'جبر و معادله', url: 'https://s34.picofile.com/d/8490656968/1c7c7399-333d-41aa-b10d-dab55c402077/37t.pdf' },
+            '4': { title: 'هندسه و استدلال', url: 'https://s34.picofile.com/d/8490657226/988879f1-9f36-4a60-b247-3646485562e1/47t.pdf' },
+            '5': { title: 'نمونه سوالات نوبت اول', url: 'https://drive.google.com/uc?export=download&id=11ckDZz8XyYnuykjIKoJHFwfKN4VKVo81' },
+            '6': { title: 'شمارنده‌ها و اعداد اول', url: 'https://s34.picofile.com/d/8490657292/6336a96b-4e09-427a-af95-cffbc4ab4e64/577t.pdf' },
+            '7': { title: 'سطح و حجم', url: 'https://s34.picofile.com/d/8490657284/303e0e22-643b-448c-9623-09833ed9059c/67t.pdf' },
+            '8': { title: 'توان و جذر', url: 'https://s34.picofile.com/d/8490657318/f26fc164-201f-4ac8-8f58-2e7b6dc75c5e/77t.pdf' },
+            '9': { title: 'بردار و مختصات', url: 'https://s34.picofile.com/d/8490657334/1b114e77-6d94-4ac1-9ad0-4b84334458ef/87t.pdf' },
+            '10': { title: 'آمار و احتمال', url: 'https://s34.picofile.com/d/8490657400/08eccd30-7206-4269-89a0-40bd13d08f9c/97t.pdf' },
+            '11': { title: 'نمونه سوالات نوبت دوم', url: '#' },
+            '12': { title: 'تیزهوشان هفتم', url: 'https://drive.google.com/uc?export=download&id=1Keqzci_3Jv6Ez500XxCOSpteDI-stui5' }
+        }
+    },
+    '8': {
+        name: 'هشتم',
+        chapters: {
+            '1': { title: 'عدد‌های صحیح و گویا', url: 'https://s34.picofile.com/d/8490733268/656afd3b-77e1-49be-bea8-a8040939633d/8f1.rar' },
+            '2': { title: 'عددهای اول', url: 'https://s34.picofile.com/d/8490749234/a41b4ad9-9955-40f7-a34d-bfcd0c37cd8f/8f2.rar' },
+            '3': { title: 'چند‌ضلعی‌ها', url: 'https://uploadkon.ir/uploads/08ad05_26fasl3hashtom1.pdf' },
+            '4': { title: 'جبر و معادله', url: 'https://s34.picofile.com/file/8490700084/88n1.pdf.html' },
+            '5': { title: 'نمونه سوالات نوبت اول', url: 'https://drive.google.com/uc?export=download&id=1GACj_BDB9Wzej--0WOyacQf56UPGktRU' },
+            '6': { title: 'بردار و مختصات', url: 'https://drive.google.com/uc?export=download&id=1ewtxxW5ywPNJSGBaZbuko2pgO0ekx-EC' },
+            '7': { title: 'مثلث', url: 'https://drive.google.com/uc?export=download&id=1AAziyqmc18TEPvq7PfcJHeJqRJitNbHw' },
+            '8': { title: 'توان و جذر', url: 'https://drive.google.com/uc?export=download&id=1wruzhKv1wxxhr98YKAhDADq5JT3h83vp' },
+            '9': { title: 'آمار و احتمال', url: 'https://drive.google.com/uc?export=download&id=1BU4ab6nsLSe_j9mtLPvT58Ln2LiT-ZyY' },
+            '10': { title: 'دایره', url: 'https://drive.google.com/uc?export=download&id=1Dtwp0IiLuDjd3W_nZVt4npYWPuABXDEh' },
+            '11': { title: 'نمونه سوالات نوبت دوم', url: '#' },
+            '12': { title: 'تیزهوشان هشتم', url: '#' }
+        }
+    },
+    '9': {
+        name: 'نهم',
+        chapters: {
+            '1': { title: 'مجموعه‌ها', url: 'https://s34.picofile.com/d/8490735642/c97655d6-85ff-410d-9a73-f01ed849b489/9f1.pdf' },
+            '2': { title: 'عدد‌های حقیقی', url: 'https://s34.picofile.com/d/8490798792/dfec96af-736e-4dd9-973b-669e6e694e90/2.pdf' },
+            '3': { title: 'استدلال و اثبات در هندسه', url: 'https://s34.picofile.com/d/8490882142/80a10a99-60c9-4428-8eee-18e6723f349b/f39.pdf' },
+            '4': { title: 'توان و ریشه', url: 'https://drive.google.com/uc?export=download&id=15NbF3M7gpt6ajXcJcsREH6ETHxu-GHeP' },
+            '5': { title: 'نمونه سوالات نوبت اول', url: 'https://s34.picofile.com/file/8490670450/101010.pdf.html' },
+            '6': { title: 'عبارت‌های جبری', url: 'https://drive.google.com/uc?export=download&id=10oaIF-BUgfLDvXDs_Gm8bWqjTyod5a0x' },
+            '7': { title: 'خط و معادله‌های خطی', url: 'https://drive.google.com/uc?export=download&id=1SbE_-B40UW9db65ruTBwRWHYCVwCQK-0' },
+            '8': { title: 'عبارت‌های گویا', url: 'https://drive.google.com/uc?export=download&id=1IXh0vpj4BkoQ9EZ5dJ3Tc_u_xd6umCeA' },
+            '9': { title: 'حجم و مساحت', url: 'https://drive.google.com/uc?export=download&id=1ILCzftfHLs0OFPLJgi0K8adPP_90wED7' },
+            '10': { title: 'نوبت دوم و نهایی', url: 'https://drive.google.com/uc?export=download&id=1rjLER-CRFg8V0crGUJA7d6AqCTIf-jPj' },
+            '11': { title: 'تیزهوشان نهم', url: '#' }
+        }
+    }
+};
+
+
+/* ==========================================================================
+   ===== توابع چت =====
+   ========================================================================== */
+const chatBox = document.getElementById('chatBox');
+const messageInput = document.getElementById('messageInput');
+const sendBtn = document.getElementById('sendBtn');
+
+let isProcessing = false;
+
+/* افزودن پیام به باکس چت */
+function addMessage(text, sender) {
+    const div = document.createElement('div');
+    div.className = 'message ' + sender;
+    div.innerHTML = text;
+    chatBox.appendChild(div);
+    chatBox.scrollTop = chatBox.scrollHeight;
+    return div;
+}
+
+/* ارسال سریع */
+function quickSend(text) {
+    messageInput.value = text;
+    sendMessage();
+}
+
+/* ارسال پیام */
+async function sendMessage() {
+    if (isProcessing) return;
+
+    const text = messageInput.value.trim();
+    if (!text) return;
+
+    addMessage(text, 'user');
+    messageInput.value = '';
+    isProcessing = true;
+    sendBtn.disabled = true;
+
+    const loadingMsg = addMessage('در حال پردازش...', 'bot loading');
+
+    try {
+        // ابتدا تلاش برای پاسخ محلی (سریع‌تر و مطمئن‌تر)
+        const localResponse = getLocalResponse(text);
+
+        if (localResponse) {
+            loadingMsg.remove();
+            addMessage(localResponse, 'bot');
+        } else {
+            // اگر پاسخ محلی نبود، از API استفاده کن
+            const aiResponse = await getAIResponse(text);
+            loadingMsg.remove();
+            addMessage(aiResponse, 'bot');
+        }
+    } catch (error) {
+        loadingMsg.remove();
+        addMessage('❌ متأسفم، خطایی رخ داد. لطفاً دوباره تلاش کنید.<br><small style="color:#999">' + error.message + '</small>', 'bot');
+        console.error(error);
+    } finally {
+        isProcessing = false;
+        sendBtn.disabled = false;
+        messageInput.focus();
+    }
+}
+
+
+/* ==========================================================================
+   ===== پاسخ‌دهی محلی (بدون نیاز به API) =====
+   این بخش سریع و مطمئن است و ابتدا بررسی می‌شود
+   ========================================================================== */
+function getLocalResponse(userMessage) {
+    const msg = userMessage.trim().toLowerCase();
+
+    // تبدیل اعداد فارسی به انگلیسی
+    const persianToEnglish = { '۰': '0', '۱': '1', '۲': '2', '۳': '3', '۴': '4', '۵': '5', '۶': '6', '۷': '7', '۸': '8', '۹': '9' };
+    const normalizedMsg = msg.replace(/[۰-۹]/g, d => persianToEnglish[d] || d);
+
+    // ---- تشخیص پایه ----
+    let gradeKey = null;
+    if (normalizedMsg.includes('هفتم') || normalizedMsg.includes('7')) gradeKey = '7';
+    if (normalizedMsg.includes('هشتم') || normalizedMsg.includes('8')) gradeKey = '8';
+    if (normalizedMsg.includes('نهم') || normalizedMsg.includes('9')) gradeKey = '9';
+
+    // ---- تشخیص فصل ----
+    const chapterMatch = normalizedMsg.match(/فصل\s*(\d+)/);
+
+    // ---- اگر پایه و فصل با هم بودند ----
+    if (gradeKey && chapterMatch) {
+        const chapterNum = chapterMatch[1];
+        const grade = chaptersData[gradeKey];
+        const chapter = grade.chapters[chapterNum];
+
+        if (chapter) {
+            return `✅ <strong>فایل پیدا شد!</strong><br><br>
+                    📚 پایه: <strong>ریاضی ${grade.name}</strong><br>
+                    🔹 فصل ${chapterNum}: <strong>${chapter.title}</strong><br><br>
+                    📥 <a href="${chapter.url}" target="_blank" rel="noopener">
+                        <i class="fas fa-download"></i> دانلود فایل PDF
+                    </a>`;
+        } else {
+            return `❌ متأسفم، فصل ${chapterNum} را در ریاضی ${grade.name} پیدا نکردم.<br>
+                    لطفاً بگویید «فصل‌های ریاضی ${grade.name}» تا لیست کامل را ببینید.`;
+        }
+    }
+
+    // ---- اگر فقط پایه ذکر شد ----
+    if (gradeKey) {
+        const grade = chaptersData[gradeKey];
+        let response = `📚 <strong>فصل‌های ریاضی ${grade.name}:</strong><br><br>`;
+
+        for (const [num, ch] of Object.entries(grade.chapters)) {
+            response += `🔹 فصل ${num}: ${ch.title}<br>`;
+        }
+
+        response += `<br>💡 برای دریافت فایل بنویسید: «فصل ۱ ریاضی ${grade.name}»`;
+        return response;
+    }
+
+    // ---- سلام و احوال‌پرسی ----
+    if (normalizedMsg.includes('سلام') || normalizedMsg.includes('hi') || normalizedMsg.includes('hello')) {
+        return `سلام! 👋 چطور می‌تونم کمکتون کنم؟<br><br>
+                برای دریافت فایل، بگویید:<br>
+                🔹 «فصل‌های ریاضی هفتم»<br>
+                🔹 «فصل ۱ ریاضی هشتم»`;
+    }
+
+    // ---- تشکر ----
+    if (normalizedMsg.includes('ممنون') || normalizedMsg.includes('مرسی') || normalizedMsg.includes('thanks')) {
+        return `خواهش می‌کنم! 😊 اگر سوال دیگری دارید، در خدمتم.`;
+    }
+
+    // ---- اگر پاسخ محلی پیدا نشد، null برگردان تا از API استفاده شود ----
+    return null;
+}
+
+
+/* ==========================================================================
+   ===== پاسخ‌دهی با هوش مصنوعی OpenRouter =====
+   ========================================================================== */
+async function getAIResponse(userMessage) {
+    // اگر API Key تنظیم نشده باشد، پاسخ پیش‌فرض بده
+    if (!OPENROUTER_API_KEY || OPENROUTER_API_KEY === 'YOUR_OPENROUTER_API_KEY_HERE') {
+        return `🤔 متوجه نشدم.<br><br>
+                لطفاً بگویید:<br>
+                🔹 «فصل‌های ریاضی هفتم»<br>
+                🔹 «فصل ۱ ریاضی هفتم»`;
+    }
+
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+            'Content-Type': 'application/json',
+            'HTTP-Referer': window.location.origin,
+            'X-Title': 'MathYar Chat'
+        },
+        body: JSON.stringify({
+            model: 'google/gemini-2.0-flash-exp:free',
+            messages: [
+                {
+                    role: 'system',
+                    content: `تو دستیار سایت MathYar هستی. فقط درباره ریاضی هفتم، هشتم و نهم پاسخ بده.
+فصل‌های موجود:
+- ریاضی هفتم: راهبردهای حل مسئله، عددهای صحیح، جبر و معادله، هندسه و استدلال، نمونه سوالات نوبت اول، شمارنده‌ها، سطح و حجم، توان و جذر، بردار و مختصات، آمار و احتمال، نوبت دوم، تیزهوشان
+- ریاضی هشتم: عدد‌های صحیح و گویا، عددهای اول، چند‌ضلعی‌ها، جبر و معادله، نوبت اول، بردار و مختصات، مثلث، توان و جذر، آمار و احتمال، دایره، نوبت دوم، تیزهوشان
+- ریاضی نهم: مجموعه‌ها، عدد‌های حقیقی، استدلال و اثبات، توان و ریشه، نوبت اول، عبارت‌های جبری، خط و معادله‌های خطی، عبارت‌های گویا، حجم و مساحت، نوبت دوم، تیزهوشان
+
+اگر سوالی خارج از این موضوعات پرسیده شد، بگو که فقط درباره ریاضی می‌توانی کمک کنی.`
+                },
+                { role: 'user', content: userMessage }
+            ],
+            temperature: 0.7,
+            max_tokens: 500
+        })
+    });
+
+    if (!response.ok) {
+        throw new Error('خطا در ارتباط با سرور هوش مصنوعی');
+    }
+
+    const data = await response.json();
+    return data.choices[0].message.content;
+}
+
+/* فوکوس روی ورودی در ابتدا */
+messageInput.focus();
+</script>
+
+</body>
+</html>
